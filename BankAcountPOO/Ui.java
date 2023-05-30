@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Ui {
   private static int option;
-  //private double value;
+  //private int number;
 
   public static int getOption() {
     return option;
@@ -13,6 +13,10 @@ public class Ui {
   }
 
   
+  /**
+   * @param option
+   * @param count
+   */
   public static void menu(int option, BankAcount count){
     optionMenu(option, count);
     Scanner in = new Scanner(System.in);
@@ -38,11 +42,17 @@ public class Ui {
     in.close();
     }
   
+    /**
+     * @param option
+     * @param count
+     */
     public static void optionMenu(int option, BankAcount count){
       double value;
       Scanner in = new Scanner(System.in);
       switch(option){
-        case 1: //System.out.printf("Código de Verificação da conta: %d",verifyingDigit());
+        case 1: System.out.printf("\nCódigo de Verificação da conta: %d",count.getNumber());
+          System.out.println();
+          System.out.printf("\nO código de verificação da conta %d é: %d", count.getNumber(), BankAcount.verifyingDigit(count.getNumber()));
           break;
         case 2: System.out.printf("\nInforme o valor a ser sacado da conta %d: ", count.getNumber());
           value = in.nextDouble();

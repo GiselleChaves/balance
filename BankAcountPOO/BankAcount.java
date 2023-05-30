@@ -9,6 +9,9 @@ public class BankAcount {
     balance = 0.0;
   }
 
+  /**
+   * @return a instance of the object BankAcount
+   */
   public static BankAcount newAcount(){
     number += 1;
     BankAcount count = new BankAcount(number);
@@ -36,18 +39,23 @@ public class BankAcount {
     return count;
   }
 
-public int verifyingDigit(String number){
-  //String inverse="", mult="", sumString="";
-  //int code=0, num, inv;
+/**
+ * @param number
+ * @return the veryfying digit of the count
+ */
+public static int verifyingDigit(int number){
+  String inverse="", mult="", sumString="";
+  int code=0, numInt, invInt;
   Integer sumInt=0;
 
-  if(number.length() == 3){
-    for(int i = number.length()-1; i>=0; i--){
-      inverse = inverse.concat(Character.toString(number.charAt(i)));
+  String numberString = String.valueOf(number);
+  if(numberString.length() == 3){
+    for(int i = numberString.length()-1; i>=0; i--){
+      inverse = inverse.concat(Character.toString(numberString.charAt(i)));
     }
-    inv = Integer.parseInt(inverse);
-    num = Integer.parseInt(number);
-    sumInt = (num + inv);
+    invInt = Integer.parseInt(inverse);
+    numInt = Integer.parseInt(numberString);
+    sumInt = (numInt + invInt);
     sumString = sumInt.toString();
 
     for(int i=1; i<=sumString.length()-1;i++){
@@ -58,12 +66,18 @@ public int verifyingDigit(String number){
   return code;
 }
 
+  /**
+   * @param value
+   */
   public void withdraw(double value){
     if(getBalance() >= value){
       setBalance(getBalance() - value);
     }
   }
 
+  /**
+   * @param value
+   */
   public void deposit(double value){
     setBalance(getBalance() + value);
   }
